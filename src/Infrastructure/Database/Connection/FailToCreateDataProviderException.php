@@ -4,6 +4,6 @@ namespace OAT\MultipleChoiceApi\Infrastructure\Database\Connection;
 
 use RuntimeException;
 
-class FailToCreateConnectionException extends RuntimeException
+class FailToCreateDataProviderException extends RuntimeException
 {
 }

@@ -5,16 +5,16 @@ namespace OAT\MultipleChoiceApi\Infrastructure\Repository;
 use OAT\MultipleChoiceApi\Domain\Contracts\QuestionRepositoryInterface;
 use OAT\MultipleChoiceApi\Domain\Question;
 use OAT\MultipleChoiceApi\Domain\QuestionCollection;
-use OAT\MultipleChoiceApi\Infrastructure\Database\Connection\StatementInterface;
+use OAT\MultipleChoiceApi\Infrastructure\Database\Connection\DataProviderInterface;
 use OAT\MultipleChoiceApi\Infrastructure\Repository\Mapper\QuestionMapper;
 use Throwable;
 
 class QuestionRepository implements QuestionRepositoryInterface
 {
-    private StatementInterface $statement;
+    private DataProviderInterface $statement;
     private QuestionMapper $mapper;
 
-    public function __construct(StatementInterface $statement, QuestionMapper $mapper)
+    public function __construct(DataProviderInterface $statement, QuestionMapper $mapper)
     {
         $this->statement = $statement;
         $this->mapper = $mapper;

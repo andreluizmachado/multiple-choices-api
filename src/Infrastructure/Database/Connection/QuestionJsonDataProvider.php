@@ -2,7 +2,7 @@
 
 namespace OAT\MultipleChoiceApi\Infrastructure\Database\Connection;
 
-class JsonStatement implements StatementInterface
+class QuestionJsonDataProvider implements DataProviderInterface
 {
     private string $filePath;
 
@@ -14,10 +14,10 @@ class JsonStatement implements StatementInterface
     /**
      * @inheritDoc
      */
-    public function insert(array $data): void
+    public function insert(array $question): void
     {
         $persistedData = $this->fetchAll();
-        $persistedData[] = $data;
+        $persistedData[] = $question;
 
         file_put_contents($this->filePath, json_encode($persistedData));
     }

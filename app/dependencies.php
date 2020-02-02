@@ -5,8 +5,8 @@ use OAT\MultipleChoiceApi\Application\Actions\Question\SaveQuestionAction;
 use OAT\MultipleChoiceApi\Domain\Contracts\QuestionRepositoryInterface;
 use OAT\MultipleChoiceApi\Domain\Contracts\QuestionServiceInterface;
 use OAT\MultipleChoiceApi\Domain\Contracts\TranslationRepositoryInterface;
-use OAT\MultipleChoiceApi\Infrastructure\Database\Connection\StatementFactory;
-use OAT\MultipleChoiceApi\Infrastructure\Database\Connection\StatementInterface;
+use OAT\MultipleChoiceApi\Infrastructure\Database\Connection\DataProviderFactory;
+use OAT\MultipleChoiceApi\Infrastructure\Database\Connection\DataProviderInterface;
 use OAT\MultipleChoiceApi\Infrastructure\Repository\Mapper\ChoiceMapper;
 use OAT\MultipleChoiceApi\Infrastructure\Repository\Mapper\QuestionMapper;
 use OAT\MultipleChoiceApi\Infrastructure\Repository\QuestionRepository;
@@ -39,7 +39,7 @@ return function (App $app) {
 
     $container[QuestionRepositoryInterface::class] = fn(ContainerInterface $container
     ): QuestionRepositoryInterface => new QuestionRepository(
-        $container[StatementInterface::class], new QuestionMapper(new ChoiceMapper())
+        $container[DataProviderInterface::class], new QuestionMapper(new ChoiceMapper())
     );
 
     $container[TranslationRepositoryInterface::class] = fn(ContainerInterface $container
@@ -49,7 +49,7 @@ return function (App $app) {
 
     $container[GoogleTranslate::class] = fn(): GoogleTranslate => new GoogleTranslate();
 
-    $container[StatementInterface::class] = fn(): StatementInterface => (new StatementFactory())->make(
+    $container[DataProviderInterface::class] = fn(): DataProviderInterface => (new DataProviderFactory())->make(
         getenv('OAT_MULTIPLE_CHOICE_API_DEFAULT_DATABASE_DSN')
     );
 

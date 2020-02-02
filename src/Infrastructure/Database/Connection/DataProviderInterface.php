@@ -4,14 +4,13 @@ namespace OAT\MultipleChoiceApi\Infrastructure\Database\Connection;
 
 use Throwable;
 
-interface StatementInterface
+interface DataProviderInterface
 {
     /**
-     * @throws Throwable
-
-     * @param array $data
-     */
-    public function insert(array $data): void;
+     * @param array $question
+     *@throws Throwable
+ */
+    public function insert(array $question): void;
 
     /**
      * @throws Throwable

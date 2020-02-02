@@ -23,22 +23,24 @@ class SaveQuestionAction
     {
         $body = $request->getParsedBody();
 
-        /** @noinspection PhpUnhandledExceptionInspection */
-        $this->service->save(
-            new Question(
-                $body['text'],
-                new DateTimeImmutable($body['createdAt']),
-                new ChoiceCollection(
-                    ...array_map(
-                           function (array $choice): Choice {
-                               return new Choice($choice['text']);
-                           },
-                           $body['choices']
-                       )
-                )
+        $question = new Question(
+            $body['text'],
+            new DateTimeImmutable($body['createdAt']),
+            new ChoiceCollection(
+                ...array_map(
+                       function (array $choice): Choice {
+                           return new Choice($choice['text']);
+                       },
+                       $body['choices']
+                   )
             )
         );
 
-        return new Response();
+        /** @noinspection PhpUnhandledExceptionInspection */
+        $this->service->save(
+            $question
+        );
+
+        return (new Response())->withJson($question);
     }
 }
