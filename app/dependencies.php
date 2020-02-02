@@ -1,7 +1,10 @@
 <?php declare(strict_types=1);
 
+use JsonSchema\Validator;
 use OAT\MultipleChoiceApi\Application\Actions\Question\ListQuestionsAction;
 use OAT\MultipleChoiceApi\Application\Actions\Question\SaveQuestionAction;
+use OAT\MultipleChoiceApi\Application\Middleware\RequestValidatorMiddleware;
+use OAT\MultipleChoiceApi\Application\RequestValidators\QuestionRequestValidator;
 use OAT\MultipleChoiceApi\Domain\Contracts\QuestionRepositoryInterface;
 use OAT\MultipleChoiceApi\Domain\Contracts\QuestionServiceInterface;
 use OAT\MultipleChoiceApi\Domain\Contracts\TranslationRepositoryInterface;
@@ -16,9 +19,11 @@ use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
 use Slim\App;
 use Stichoza\GoogleTranslate\GoogleTranslate;
-use Stichoza\GoogleTranslate\TranslateClient;
 
-return function (App $app) {
+return function (App $app): void {
+    $questionSearchRequestValidatorMiddleware = RequestValidatorMiddleware::class . '::QuestionSearchRequest';
+    $questionValidatorMiddleware = RequestValidatorMiddleware::class . '::Question';
+
     $container = $app->getContainer();
 
     $container[ListQuestionsAction::class] = fn(ContainerInterface $container
@@ -29,6 +34,24 @@ return function (App $app) {
     $container[SaveQuestionAction::class] = fn(ContainerInterface $container
     ): SaveQuestionAction => new SaveQuestionAction(
         $container[QuestionService::class]
+    );
+
+    $container[$questionSearchRequestValidatorMiddleware] = function(ContainerInterface $container
+    ): RequestValidatorMiddleware {
+        return new RequestValidatorMiddleware(
+            new QuestionRequestValidator(
+                new Validator(),
+                $container['settings']['schemas']['questionSearchRequest']
+            )
+        );
+    };
+
+    $container[$questionValidatorMiddleware] = fn(ContainerInterface $container
+    ): RequestValidatorMiddleware => new RequestValidatorMiddleware(
+        new QuestionRequestValidator(
+            new Validator(),
+            $container['settings']['schemas']['question']
+        )
     );
 
     $container[QuestionService::class] = fn(ContainerInterface $container

@@ -13,5 +13,9 @@ return [
             'path' => isset($_ENV['docker']) ? 'php://stdout' : __DIR__ . '/../logs/app.log',
             'level' => Logger::DEBUG,
         ],
+        'schemas' => [
+            'question' => __DIR__ . '/../public/schema/Question.json',
+            'questionSearchRequest' => __DIR__ . '/../public/schema/QuestionSearchRequest.json',
+        ],
     ],
 ];
