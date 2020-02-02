@@ -5,7 +5,7 @@ namespace OAT\MultipleChoiceApi\Infrastructure\Repository;
 use OAT\MultipleChoiceApi\Domain\Contracts\QuestionRepositoryInterface;
 use OAT\MultipleChoiceApi\Domain\Question;
 use OAT\MultipleChoiceApi\Domain\QuestionCollection;
-use OAT\MultipleChoiceApi\Infrastructure\Database\Connection\DataProviderInterface;
+use OAT\MultipleChoiceApi\Infrastructure\Database\DataProvider\DataProviderInterface;
 use OAT\MultipleChoiceApi\Infrastructure\Repository\Mapper\QuestionMapper;
 use Throwable;
 

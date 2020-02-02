@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace OAT\MultipleChoiceApi\Infrastructure\Database\Connection;
+namespace OAT\MultipleChoiceApi\Infrastructure\Database\DataProvider;
 
 class DataProviderFactory
 {

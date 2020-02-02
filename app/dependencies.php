@@ -8,8 +8,8 @@ use OAT\MultipleChoiceApi\Application\RequestValidators\QuestionRequestValidator
 use OAT\MultipleChoiceApi\Domain\Contracts\QuestionRepositoryInterface;
 use OAT\MultipleChoiceApi\Domain\Contracts\QuestionServiceInterface;
 use OAT\MultipleChoiceApi\Domain\Contracts\TranslationRepositoryInterface;
-use OAT\MultipleChoiceApi\Infrastructure\Database\Connection\DataProviderFactory;
-use OAT\MultipleChoiceApi\Infrastructure\Database\Connection\DataProviderInterface;
+use OAT\MultipleChoiceApi\Infrastructure\Database\DataProvider\DataProviderFactory;
+use OAT\MultipleChoiceApi\Infrastructure\Database\DataProvider\DataProviderInterface;
 use OAT\MultipleChoiceApi\Infrastructure\Repository\Mapper\ChoiceMapper;
 use OAT\MultipleChoiceApi\Infrastructure\Repository\Mapper\QuestionMapper;
 use OAT\MultipleChoiceApi\Infrastructure\Repository\QuestionRepository;

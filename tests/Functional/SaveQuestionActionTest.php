@@ -2,7 +2,7 @@
 
 namespace Tests\Functional;
 
-use OAT\MultipleChoiceApi\Infrastructure\Database\Connection\DataProviderInterface;
+use OAT\MultipleChoiceApi\Infrastructure\Database\DataProvider\DataProviderInterface;
 
 class SaveQuestionActionTest extends BaseTestCase
 {
