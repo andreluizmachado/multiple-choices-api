@@ -32,13 +32,17 @@ cd multiple-choices-api
 ```shell
 composer install
 ```
+4- Create your .env file:
+```shell
+cp .env.dist .env
+```
 
-4- Start the application:
+5- Start the application:
 ```shell
 docker-compose up -d
 ```
 
-5- Access the bellow address in your browser:
+6- Access the bellow address in your browser:
 ```shell
 http://localhost:8080
 ```
