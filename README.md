@@ -28,12 +28,17 @@ git clone https://github.com/andreluizmachado/multiple-choices-api.git
 cd multiple-choices-api
 ```
 
-3- Start the application:
+3- Install the dependencies:
+```shell
+composer install
+```
+
+4- Start the application:
 ```shell
 docker-compose up -d
 ```
 
-4- Access the bellow address in your browser:
+5- Access the bellow address in your browser:
 ```shell
 http://localhost:8080
 ```
