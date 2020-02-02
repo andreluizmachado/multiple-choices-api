@@ -8,10 +8,6 @@ class DataProviderFactory
     {
         $dsn = parse_url($dsnRaw);
 
-        if(!isset($dsn['path'])) {
-            throw new FailToCreateDataProviderException('Please, specify the path');
-        }
-
         $extension = pathinfo($dsn['path'], PATHINFO_EXTENSION);
 
         if ('json' === $extension)
