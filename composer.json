@@ -1,16 +1,7 @@
 {
-    "name": "slim/slim-skeleton",
-    "description": "A Slim Framework skeleton application for rapid development",
-    "keywords": ["microframework", "rest", "router", "psr7"],
-    "homepage": "http://github.com/slimphp/Slim-Skeleton",
+    "name": "oat/multiple-choice-api",
+    "description": "Multiple choice api test",
     "license": "MIT",
-    "authors": [
-        {
-            "name": "Josh Lockhart",
-            "email": "info@joshlockhart.com",
-            "homepage": "http://www.joshlockhart.com/"
-        }
-    ],
     "require": {
         "php": ">=5.6",
         "ext-json": "*",
@@ -22,6 +13,7 @@
         "vlucas/phpdotenv": "^4.1"
     },
     "require-dev": {
+        "ext-dom": "*",
         "phpunit/phpunit": ">=5.0"
     },
     "autoload": {

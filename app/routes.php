@@ -7,8 +7,6 @@ use OAT\MultipleChoiceApi\Application\Middleware\ResponseFormatterMiddleware;
 use Slim\App;
 
 return function (App $app): void {
-    $container = $app->getContainer();
-
     $app->group(
         '/questions',
         function (App $app) {

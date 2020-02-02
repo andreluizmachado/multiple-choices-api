@@ -1,33 +1,50 @@
-# Slim Framework 3 Skeleton Application
+# Multiple Choice Api
 
-Use this skeleton application to quickly setup and start working on a new Slim Framework 3 application. This application uses the latest Slim 3 with the PHP-View template renderer. It also uses the Monolog logger.
+A PHP implementation of a question and multiples choices Api.
 
-This skeleton application was built for Composer. This makes setting up a new Slim Framework application quick and easy.
+## Getting Started
 
-## Install the Application
+### Prerequisites
 
-Run this command from the directory in which you want to install your new Slim Framework application.
+Before start, you must have installed in your machine the following tools:
 
-    php composer.phar create-project slim/slim-skeleton [my-app-name]
+* [Docker](https://docs.docker.com/engine/installation/) - version >=17.0
+* [Docker Compose](https://docs.docker.com/compose/install/) - version >=13.0
+* [Git](https://git-scm.com/)
 
-Replace `[my-app-name]` with the desired directory name for your new application. You'll want to:
+### Installing
 
-* Point your virtual host document root to your new application's `public/` directory.
-* Ensure `logs/` is web writeable.
+Follow the steps bellow to get the development/testing environment up and running:
 
-To run the application in development, you can run these commands 
 
-	cd [my-app-name]
-	php composer.phar start
-	
-Or you can use `docker-compose` to run the app with `docker`, so you can run these commands:
+1- Clone this repository:
 
-         cd [my-app-name]
-	 docker-compose up -d
-After that, open `http://0.0.0.0:8080` in your browser.
+```shell
+git clone https://github.com/andreluizmachado/multiple-choices-api.git
+```
 
-Run this command in the application directory to run the test suite
+2- Go to project folder:
+```shell
+cd multiple-choices-api
+```
 
-	php composer.phar test
+3- Start the application:
+```shell
+docker-compose up -d
+```
 
-That's it! Now go build something cool.
+4- Access the bellow address in your browser:
+```shell
+http://localhost:8080
+```
+
+## API Resources
+Please check the open-api.yaml file into this project
+
+## Running the tests
+
+* **Functional tests** - After the docker-composer up, run the command:
+
+```shell
+ docker-compose exec -T multiple-choice-api ./vendor/bin/phpunit  
+```
