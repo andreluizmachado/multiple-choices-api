@@ -30,7 +30,7 @@ class Question implements JsonSerializable
         return $this->createdAt;
     }
 
-    public function getChoiceCollection(): ChoiceCollection
+    public function getChoices(): ChoiceCollection
     {
         return $this->choiceCollection;
     }

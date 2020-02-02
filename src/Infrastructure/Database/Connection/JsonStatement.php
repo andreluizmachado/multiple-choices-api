@@ -1,8 +1,6 @@
 <?php declare(strict_types=1);
 
-
 namespace OAT\MultipleChoiceApi\Infrastructure\Database\Connection;
-
 
 class JsonStatement implements StatementInterface
 {
@@ -13,7 +11,6 @@ class JsonStatement implements StatementInterface
         $this->filePath = $filePath;
     }
 
-
     /**
      * @inheritDoc
      */
@@ -22,7 +19,7 @@ class JsonStatement implements StatementInterface
         $persistedData = $this->fetchAll();
         $persistedData[] = $data;
 
-        file_put_contents($this->filePath, $persistedData);
+        file_put_contents($this->filePath, json_encode($persistedData));
     }
 
     /**

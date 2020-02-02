@@ -15,7 +15,7 @@ class QuestionMapper
         $this->choiceMapper = $choiceMapper;
     }
 
-    public function map(array $data): Question
+    public function mapArrayToDomain(array $data): Question
     {
         /** @noinspection PhpUnhandledExceptionInspection */
         return new Question(
@@ -25,8 +25,17 @@ class QuestionMapper
         );
     }
 
-    public function mapCollection(array $data): QuestionCollection
+    public function mapArrayToCollection(array $data): QuestionCollection
     {
-        return new QuestionCollection(...array_map([$this, 'map'], $data));
+        return new QuestionCollection(...array_map([$this, 'mapArrayToDomain'], $data));
+    }
+
+    public function mapDomainToArray(Question $question): array
+    {
+        return [
+            'text' => $question->getText(),
+            'createdAt' => $question->getCreatedAt()->format(DATE_ATOM),
+            'choices' => $this->choiceMapper->mapCollectionToArray($question->getChoices())
+        ];
     }
 }

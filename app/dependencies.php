@@ -1,6 +1,7 @@
 <?php declare(strict_types=1);
 
 use OAT\MultipleChoiceApi\Application\Actions\Question\ListQuestionsAction;
+use OAT\MultipleChoiceApi\Application\Actions\Question\SaveQuestionAction;
 use OAT\MultipleChoiceApi\Domain\Contracts\QuestionRepositoryInterface;
 use OAT\MultipleChoiceApi\Domain\Contracts\QuestionServiceInterface;
 use OAT\MultipleChoiceApi\Domain\Contracts\TranslationRepositoryInterface;
@@ -20,14 +21,15 @@ use Stichoza\GoogleTranslate\TranslateClient;
 return function (App $app) {
     $container = $app->getContainer();
 
-    $container[ListQuestionsAction::class] = function(ContainerInterface $container
-    ): ListQuestionsAction {
+    $container[ListQuestionsAction::class] = fn(ContainerInterface $container
+    ): ListQuestionsAction => new ListQuestionsAction(
+        $container[QuestionService::class]
+    );
 
-       return
-        new ListQuestionsAction(
-            $container[QuestionService::class]
-        );
-    };
+    $container[SaveQuestionAction::class] = fn(ContainerInterface $container
+    ): SaveQuestionAction => new SaveQuestionAction(
+        $container[QuestionService::class]
+    );
 
     $container[QuestionService::class] = fn(ContainerInterface $container
     ): QuestionServiceInterface => new QuestionService(

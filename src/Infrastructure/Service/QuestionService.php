@@ -10,6 +10,7 @@ use OAT\MultipleChoiceApi\Domain\QuestionCollection;
 use OAT\MultipleChoiceApi\Domain\SearchRequest\QuestionSearchRequest;
 use OAT\MultipleChoiceApi\Domain\SearchRequest\TranslationSearchRequest;
 use OAT\MultipleChoiceApi\Infrastructure\Repository\TranslationRepository;
+use Throwable;
 
 class QuestionService implements QuestionServiceInterface
 {
@@ -46,7 +47,7 @@ class QuestionService implements QuestionServiceInterface
             );
 
             /** @var Choice $choice */
-            foreach ($question->getChoiceCollection() as $choice) {
+            foreach ($question->getChoices() as $choice) {
                 $choice->setText(
                     $this->translationRepository->first(
                         new TranslationSearchRequest(
@@ -60,5 +61,15 @@ class QuestionService implements QuestionServiceInterface
         }
 
         return $questions;
+    }
+
+    /**
+     * @param Question $question
+     *
+     * @throws Throwable
+     */
+    public function save(Question $question): void
+    {
+        $this->questionRepository->save($question);
     }
 }

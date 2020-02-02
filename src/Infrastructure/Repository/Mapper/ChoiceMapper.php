@@ -16,4 +16,14 @@ class ChoiceMapper
     {
         return new ChoiceCollection(...array_map([$this, 'map'], $data));
     }
+
+    public function mapCollectionToArray(ChoiceCollection $choiceCollection): array
+    {
+        return array_map(
+            fn(Choice $choice): array => [
+                'text' => $choice->getText(),
+            ],
+            [...$choiceCollection]
+        );
+    }
 }

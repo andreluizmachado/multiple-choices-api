@@ -3,6 +3,7 @@
 namespace OAT\MultipleChoiceApi\Infrastructure\Repository;
 
 use OAT\MultipleChoiceApi\Domain\Contracts\QuestionRepositoryInterface;
+use OAT\MultipleChoiceApi\Domain\Question;
 use OAT\MultipleChoiceApi\Domain\QuestionCollection;
 use OAT\MultipleChoiceApi\Infrastructure\Database\Connection\StatementInterface;
 use OAT\MultipleChoiceApi\Infrastructure\Repository\Mapper\QuestionMapper;
@@ -20,12 +21,20 @@ class QuestionRepository implements QuestionRepositoryInterface
     }
 
     /**
-     * @return QuestionCollection
-     *
-     * @throws Throwable
+     * @inheritDoc
      */
     public function fetchAll(): QuestionCollection
     {
-        return $this->mapper->mapCollection($this->statement->fetchAll());
+        return $this->mapper->mapArrayToCollection($this->statement->fetchAll());
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function save(Question $question): void
+    {
+        $this->statement->insert(
+            $this->mapper->mapDomainToArray($question)
+        );
     }
 }
