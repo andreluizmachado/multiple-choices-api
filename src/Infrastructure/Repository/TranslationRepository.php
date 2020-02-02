@@ -4,15 +4,16 @@ namespace OAT\MultipleChoiceApi\Infrastructure\Repository;
 
 use OAT\MultipleChoiceApi\Domain\Contracts\TranslationRepositoryInterface;
 use OAT\MultipleChoiceApi\Domain\SearchRequest\TranslationSearchRequest;
+use Stichoza\GoogleTranslate\GoogleTranslate;
 use Stichoza\GoogleTranslate\TranslateClient;
 
 class TranslationRepository implements TranslationRepositoryInterface
 {
     public const DEFAULT_LANGUAGE = 'en';
 
-    private TranslateClient $client;
+    private GoogleTranslate $client;
 
-    public function __construct(TranslateClient $client)
+    public function __construct(GoogleTranslate $client)
     {
         $this->client = $client;
     }

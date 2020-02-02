@@ -14,6 +14,7 @@ use OAT\MultipleChoiceApi\Infrastructure\Service\QuestionService;
 use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
 use Slim\App;
+use Stichoza\GoogleTranslate\GoogleTranslate;
 use Stichoza\GoogleTranslate\TranslateClient;
 
 return function (App $app) {
@@ -41,10 +42,10 @@ return function (App $app) {
 
     $container[TranslationRepositoryInterface::class] = fn(ContainerInterface $container
     ): TranslationRepository => new TranslationRepository(
-        $container[TranslateClient::class]
+        $container[GoogleTranslate::class]
     );
 
-    $container[TranslateClient::class] = fn(): TranslateClient => new TranslateClient();
+    $container[GoogleTranslate::class] = fn(): GoogleTranslate => new GoogleTranslate();
 
     $container[StatementInterface::class] = fn(): StatementInterface => (new StatementFactory())->make(
         getenv('OAT_MULTIPLE_CHOICE_API_DEFAULT_DATABASE_DSN')

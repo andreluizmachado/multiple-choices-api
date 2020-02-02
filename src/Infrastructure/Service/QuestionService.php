@@ -39,7 +39,7 @@ class QuestionService implements QuestionServiceInterface
                 $this->translationRepository->first(
                     new TranslationSearchRequest(
                         TranslationRepository::DEFAULT_LANGUAGE,
-                        $searchRequest->getLang(),
+                        $searchRequest->getLanguage(),
                         $question->getText()
                     )
                 )
@@ -51,7 +51,7 @@ class QuestionService implements QuestionServiceInterface
                     $this->translationRepository->first(
                         new TranslationSearchRequest(
                             TranslationRepository::DEFAULT_LANGUAGE,
-                            $searchRequest->getLang(),
+                            $searchRequest->getLanguage(),
                             $choice->getText()
                         )
                     )
