@@ -48,7 +48,7 @@ Please check the [open-api.yaml](https://github.com/andreluizmachado/multiple-ch
 
 ## Running the tests
 
-* **Functional tests** - After the docker-composer up, run the command:
+* **Unit and Functional tests** - After the docker-composer up, run the command:
 
 ```shell
  docker-compose exec -T multiple-choice-api ./vendor/bin/phpunit  
