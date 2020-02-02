@@ -44,7 +44,7 @@ docker-compose up -d
 
 6- Access the bellow address in your browser:
 ```shell
-http://localhost:8080
+curl http://localhost:8080/questions?lang=en
 ```
 
 ## API Resources
