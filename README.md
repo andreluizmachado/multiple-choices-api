@@ -9,7 +9,7 @@ A PHP implementation of a question and multiples choices Api.
 Before start, you must have installed in your machine the following tools:
 
 * [Docker](https://docs.docker.com/engine/installation/) - version >=17.0
-* [Docker Compose](https://docs.docker.com/compose/install/) - version >=13.0
+* [Docker Compose](https://docs.docker.com/compose/install/) - version >=1.18.0
 * [Git](https://git-scm.com/)
 
 ### Installing
