@@ -44,7 +44,7 @@ http://localhost:8080
 ```
 
 ## API Resources
-Please check the open-api.yaml file into this project
+Please check the [open-api.yaml](https://github.com/andreluizmachado/multiple-choices-api/blob/master/public/open-api.yaml) file into this project
 
 ## Running the tests
 
