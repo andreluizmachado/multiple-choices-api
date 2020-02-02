@@ -3,3 +3,4 @@
 !/logs/README.md
 phpunit.xml
 .env
+.phpunit.result.cache
